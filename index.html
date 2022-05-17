@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Dice Game</title>
+	</head>
+	<body id="game">
+		<div id="header">
+		<!--This is the How to play section-->
+			<p><small>
+				<br/>HOW TO PLAY :<br/>
+				<br/>Each Player have a Dice with a "Roll", "Pass" and "Play Again" Buttons.
+				<br/>Press on any of them to play.<br/>
+				<br/>The first person to reach a score of 0 wins!
+				<br/>unless if your dice rolls "1", then you lose!<br/>
+				<br/>Thanks for playing!
+			</small></p>
+		</div>
+    <!--Player 1 Score and "Player 1" Text-->
+		<div class="areaAll">
+			<div id="areaPlayer1">
+				<p id="namePlayer1">Player 1</p>
+				<p class="score-container-1">
+					Score: <span id="scorePlayer1">-</span>
+				</p>
+		<!--Player 1 Text and Dice Image-->
+				<div class="areaDice">
+					<div id="rollText1">Roll your dice!</div>
+					<div class="image-container-1">
+						<img id="imagePlayer1"/>
+					</div>
+				</div>
+    <!--Player 1 Buttons-->
+				<div id="buttons1">
+					<button id="rollPlayer1">Roll</button>
+					<button id="passPlayer1">Pass</button>
+					<button id="playAgain1">Play Again</button>
+				</div>
+			</div>
+    <!--Player 2 Score and "Player 2" Text-->
+			<div id="areaPlayer2">
+				<p id="namePlayer2">Player 2</p>
+				<p class="score-container-2">
+					Score: <span id="scorePlayer2">-</span>
+				</p>
+    <!--Player 2 Text and Dice Image-->
+				<div class="areaDice">
+					<div id="rollText2">Roll your dice!</div>
+					<div class="image-container-2">
+						<img id="imagePlayer2"/>
+					</div>
+				</div>
+    <!--Player 2 Buttons-->
+				<div id="buttons2">
+					<button id="playAgain2">Play Again</button>
+					<button id="rollPlayer2">Roll</button>
+					<button id="passPlayer2">Pass</button>
+				</div>
+			</div>
+		</div>
+    <!--Exclamation mark Image and Instructions Button-->
+		<div id="InstImage">
+      <img id="QuestGiver" src="./images/Instructions.png" />
+			<button id="insButton" onclick="show_hide()">Instructions</button>
+    </div>
+
+
+		<script src="app.js"></script>
+	</body>
+</html>
