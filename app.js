@@ -1,164 +1,144 @@
-const body = document.getElementById("game");
-const header = document.querySelector("#header");
+let insButton = document.getElementById('insButton');
+let header = document.getElementById('header');
+let rollPlayer1 = document.getElementById('rollPlayer1');
+let passPlayer1 = document.getElementById('passPlayer1');
+let playAgain1 = document.getElementById('playAgain1');
+let imagePlayer1 = document.getElementById('imagePlayer1');
+let scoreContainer1 = document.getElementById('score-container-1');
+let totalWins1 = document.getElementById('total-wins-1');
+let rollText1 = document.getElementById('rollText1');
+let rollPlayer2 = document.getElementById('rollPlayer2');
+let passPlayer2 = document.getElementById('passPlayer2');
+let playAgain2 = document.getElementById('playAgain2');
+let imagePlayer2 = document.getElementById('imagePlayer2');
+let scoreContainer2 = document.getElementById('score-container-2');
+let totalWins2 = document.getElementById('total-wins-2')
+let rollText2 = document.getElementById('rollText2');
 
-// Player 1 variables
-const areaPlayer1 = document.getElementById("areaPlayer1");
-const scoreContainer1 = document.querySelector(".score-container-1");
-const scorePlayer1 = document.getElementById("scorePlayer1");
-const imageContainer1 = document.querySelector(".image-container-1");
-const imagePlayer1 = document.getElementById("imagePlayer1");
-const rollText1 = document.getElementById("rollText1");
-const rollPlayer1 = document.getElementById("rollPlayer1");
-const passPlayer1 = document.getElementById("passPlayer1");
-const playAgain1 = document.getElementById("playAgain1");
-
-// Player 2 variables
-const areaPlayer2 = document.getElementById("areaPlayer2");
-const scoreContainer2 = document.querySelector(".score-container-2");
-const scorePlayer2 = document.getElementById("scorePlayer2");
-const imageContainer2 = document.querySelector(".image-container-2");
-const imagePlayer2 = document.getElementById("imagePlayer2");
-const rollText2 = document.getElementById("rollText2");
-const rollPlayer2 = document.getElementById("rollPlayer2");
-const passPlayer2 = document.getElementById("passPlayer2");
-const playAgain2 = document.getElementById("playAgain2");
-
-let player1Total = 0;
-let player2Total = 0;
-let currentPlayer = 1;
-
-// Which Player will roll first
-if ((currentPlayer = 1)) {
-
-	rollText1.textContent = "Player 1 is rolling";
-} else if ((currentPlayer = 2)) {
-
-	rollText2.textContent = "Player 2 is rolling";
-}
-
-// Winning logic
-const winPlayer1 = () => {
-	scorePlayer1.textContent = `${player1Total} - Winner!`;
-
-	player1Total = 0;
-};
-const losePlayer1 = () => {
-	scorePlayer1.textContent = `${player1Total} - You lost!`;
-
-	player1Total = 0;
-};
-const winPlayer2 = () => {
-	scorePlayer2.textContent = `${player2Total} - Winner!`;
-
-	player2Total = 0;
-};
-const losePlayer2 = () => {
-	scorePlayer2.textContent = `${player2Total} - You lost!`;
-
-	player2Total = 0;
-};
-
-// Player 1
-rollPlayer1.addEventListener("click", () => {
-	if (currentPlayer == 1) {
-		let currentRoll = Math.ceil(Math.random() * 6);
-
-		rollText1.style.display = "none";
-		imageContainer1.style.display = "block";
-		imagePlayer1.src = `./images/${currentRoll}.png`;
-
-
-		player1Total += currentRoll;
-		scorePlayer1.textContent = player1Total;
-
-		if (player1Total >= 20) {
-			// Player 1 Wins
-			body.style.backgroundColor = "#FFDE00";
-			winPlayer1();
-			// Player 2 Loses
-			rollText2.textContent = "Better luck next time.";
-			losePlayer2();
-		} else {
-			if (currentRoll == 1) {
-				// PLayer 1 Loses
-				body.style.backgroundColor = "#161822";
-				losePlayer1();
-				// Player 2 Wins
-				rollText2.textContent = "It's your lucky day!";
-				winPlayer2();
-			}
-		}
-	}
-});
-
-// Player 2
-rollPlayer2.addEventListener("click", () => {
-	if (currentPlayer == 2) {
-		let currentRoll = Math.ceil(Math.random() * 6);
-
-		rollText2.style.display = "none";
-		imageContainer2.style.display = "block";
-		imagePlayer2.src = `images/${currentRoll}.png`;
-
-		player2Total += currentRoll;
-		scorePlayer2.textContent = player2Total;
-
-		if (player2Total >= 20) {
-			// Player 2 Wins
-			body.style.backgroundColor = "#FFDE00";
-			winPlayer2();
-			// Player 1 Loses
-			rollText1.textContent = "Maybe don't pass next time.";
-			losePlayer1();
-		} else {
-			if (currentRoll == 1) {
-				// Player 2 Loses
-				body.style.backgroundColor = "#161822";
-				losePlayer2();
-				// Player 1 Wins
-				rollText1.textContent = "It's your lucky day!";
-				winPlayer1();
-			}
-		}
-	}
-});
-
-// Pass Buttons
-passPlayer1.addEventListener("click", () => {
-	if (currentPlayer == 1) {
-		currentPlayer = 2;
-		rollText2.textContent = "Roll your dice!";
-	
-	}
-});
-passPlayer2.addEventListener("click", () => {
-	if (currentPlayer == 2) {
-		currentPlayer = 1;
-	
-	}
-});
-
-// Play again  Buttons
-playAgain1.addEventListener("click", () => {
-	window.location.reload();
-});
-playAgain2.addEventListener("click", () => {
-	window.location.reload();
-});
-
-// Instruction Button
+let Player1Score = 0 
+let Player2Score = 0
+let Player1TotalWins = 0
+let Player2TotalWins = 0
 let a;
-function show_hide()
-{
-	if(a==1)
-		{
-			document.getElementById('header').style.display='inline';
-			return a=0;
-		}
-	
-	else 
-		{
-			document.getElementById('header').style.display='none';
-			return a=1;
-		}
-}
+
+// Buttons functionality
+rollPlayer1.addEventListener('click', () => {
+	let currentRoll = Math.ceil(Math.random()*6)
+	imagePlayer1.src = `./images/${currentRoll}.png`
+	Player1Score += currentRoll
+	scoreContainer1.textContent = `Score: ${Player1Score}`
+	rollText1.textContent = 'Roll your dice!'
+	if (Player1Score >= 20) {
+		Player1TotalWins += 1
+		rollText1.textContent = 'Player 1 Wins'
+		Player1Score = 0
+		Player2Score = 0
+		scoreContainer1.textContent = `Score: ${Player1Score}`
+		scoreContainer2.textContent = `Score: ${Player2Score}`
+		totalWins1.textContent = `Wins: ${Player1TotalWins}`
+	}
+
+	else if (currentRoll == 1) {
+		Player2TotalWins += 1
+		rollText1.textContent = 'Player 1 Lose!'
+		Player1Score = 0
+		Player2Score = 0
+		scoreContainer1.textContent = `Score: ${Player1Score}`
+		scoreContainer2.textContent = `Score: ${Player2Score}`
+		totalWins2.textContent = `Wins: ${Player2TotalWins}`
+	}
+}); 
+
+passPlayer1.addEventListener('click', () => {
+	if (a == true) {
+		passPlayer2.style.display = 'inline', 
+		rollPlayer2.style.display = 'inline', 
+		playAgain2.style.display = 'inline'
+		return a = false
+	}
+
+	else if (
+		passPlayer1.style.display = 'none', 
+		rollPlayer1.style.display = 'none', 
+		playAgain1.style.display = 'none') {
+		return a = true
+	}
+
+	// else {
+	// 	passPlayer1.style.display = 'none'
+	// 	rollPlayer1.style.display = 'none'
+	// 	playAgain1.style.display = 'none'
+	// 	return a = true
+	// }
+
+// 	rollPlayer1.style.display = 'none'
+// 	rollPlayer2.style.display = 'absolute'
+// })
+
+// passPlayer2.addEventListener('click', () => {
+// 	rollPlayer2.style.display = 'none'
+// 	rollPlayer1.style.display = 'absolute'
+})
+
+playAgain1.addEventListener('click', () => {
+	window.location.reload()
+})
+
+rollPlayer2.addEventListener('click', () => {
+	let currentRoll = Math.ceil(Math.random()*6)
+	imagePlayer2.src = `./images/${currentRoll}.png`
+	Player2Score += currentRoll
+	scoreContainer2.textContent = `Score: ${Player2Score}`
+	rollText2.textContent = 'Roll your dice!'
+	if (Player2Score >= 20) {
+		Player2TotalWins += 1
+		rollText2.textContent = 'Player 2 Wins'
+		Player1Score = 0
+		Player2Score = 0
+		scoreContainer1.textContent = `Score: ${Player1Score}`
+		scoreContainer2.textContent = `Score: ${Player2Score}`
+		totalWins2.textContent = `Wins: ${Player2TotalWins}`
+	}
+
+	else if (currentRoll == 1) {
+		Player1TotalWins += 1
+		rollText2.textContent = 'Player 2 Lose!'
+		Player1Score = 0
+		Player2Score = 0
+		scoreContainer1.textContent = `Score: ${Player1Score}`
+		scoreContainer2.textContent = `Score: ${Player2Score}`
+		totalWins1.textContent = `Wins: ${Player1TotalWins}`
+	}
+});
+
+passPlayer2.addEventListener('click', () => {
+	if (a == true) {
+		passPlayer1.style.display = 'inline', 
+		rollPlayer1.style.display = 'inline', 
+		playAgain1.style.display = 'inline'
+		return a = false
+	}
+
+	else if (
+		passPlayer2.style.display = 'none', 
+		rollPlayer2.style.display = 'none', 
+		playAgain2.style.display = 'none') {
+		return a = true
+	}
+})
+
+playAgain2.addEventListener('click', () => {
+	window.location.reload()
+})
+
+insButton.addEventListener('click', () => {
+	if (a == true) {
+		header.style.display = 'inline'
+		return a = false
+	}
+
+	else {
+		header.style.display = 'none'
+		return a = true
+	}
+})

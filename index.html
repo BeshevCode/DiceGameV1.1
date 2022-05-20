@@ -11,21 +11,24 @@
 	<body id="game">
 		<div id="header">
 		<!--This is the How to play section-->
-			<p><small>
+			<p>
 				<br/>HOW TO PLAY :<br/>
 				<br/>Each Player have a Dice with a "Roll", "Pass" and "Play Again" Buttons.
 				<br/>Press on any of them to play.<br/>
 				<br/>The first person to reach a score of 0 wins!
 				<br/>unless if your dice rolls "1", then you lose!<br/>
 				<br/>Thanks for playing!
-			</small></p>
+			</p>
 		</div>
     <!--Player 1 Score and "Player 1" Text-->
 		<div class="areaAll">
 			<div id="areaPlayer1">
 				<p id="namePlayer1">Player 1</p>
-				<p class="score-container-1">
-					Score: <span id="scorePlayer1">-</span>
+				<p id="total-wins-1">
+					Wins:
+				</p>
+				<p id="score-container-1">
+					Score:
 				</p>
 		<!--Player 1 Text and Dice Image-->
 				<div class="areaDice">
@@ -44,8 +47,11 @@
     <!--Player 2 Score and "Player 2" Text-->
 			<div id="areaPlayer2">
 				<p id="namePlayer2">Player 2</p>
-				<p class="score-container-2">
-					Score: <span id="scorePlayer2">-</span>
+				<p id="total-wins-2">
+					Wins:
+				</p>
+				<p id="score-container-2">
+					Score:
 				</p>
     <!--Player 2 Text and Dice Image-->
 				<div class="areaDice">
@@ -65,7 +71,7 @@
     <!--Exclamation mark Image and Instructions Button-->
 		<div id="InstImage">
       <img id="QuestGiver" src="./images/Instructions.png" />
-			<button id="insButton" onclick="show_hide()">Instructions</button>
+			<button id="insButton">Instructions</button>
     </div>
 
 
